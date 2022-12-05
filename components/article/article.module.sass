@@ -1,0 +1,30 @@
+.article
+  display: flex
+  padding-bottom: 10px
+  border-bottom: 1px solid #eee
+  & :global
+    .info
+      flex: 1
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      .text
+        &>h4
+          margin-bottom: 10px
+          line-height: 26px
+          font-size: 18px
+          font-weight: 500
+        &>p
+          line-height: 20px
+          font-size: 14px
+          color: #828a92
+      .data
+        font-size: 14px
+        color: #333
+        .author
+          margin-right: 200px
+        .view
+          margin-left: 200px
+    .cover
+      height: 137px
+      width: 244px
