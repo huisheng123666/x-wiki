@@ -16,6 +16,6 @@ export default async function handler(
     const article = await Article.create({ ...req.body, user: deUser._id })
     res.status(200).json({ code: 1, data: article })
   } catch (err: any) {
-    res.status(200).json(genErrRes(err.message))
+    res.status(200).json(genErrRes(err.message, res))
   }
 }

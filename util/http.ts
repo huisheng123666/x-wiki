@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {axiosOptions} from "@/config";
+import header from "@/components/header/header";
 
 const instance = axios.create(axiosOptions)
 
@@ -7,18 +8,23 @@ instance.interceptors.response.use((res) => {
   if (res.data.code === 1) {
     return res.data
   } else {
-    return Promise.reject(res.data.message)
+    return Promise.reject(res.data)
   }
 }, (err) => {
-  return Promise.reject(err.response?.data?.message || err.message)
+  return Promise.reject({
+    code: 0,
+    message: err.response?.data?.message || err.message
+  })
 })
 
-export const post = <T>({ req, data = {}, url }: { req?: any, data?: any, url: string }) => {
-  const headers: any = {}
+export const post = <T>({ req, data = {}, url, headers = {} }: { req?: any, data?: any, url: string, headers?: any }) => {
+  const oHeaders: any = {
+    ...headers
+  }
   if (!process.browser && req) {
-    headers.token = req.cookies.token
+    oHeaders.token = req.cookies.token
   }
   return instance.post<any, T>(url, data, {
-    headers
+    headers: oHeaders
   })
 }

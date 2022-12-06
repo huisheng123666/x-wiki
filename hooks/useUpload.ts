@@ -3,7 +3,7 @@ import {post} from "@/util/http";
 
 interface UploadParams {
   multiple?: boolean;
-  validateFile?: (file: File) => boolean;
+  validateFile?: (file: File) => string;
 }
 
 export function useUpload({ multiple = false, validateFile }: UploadParams) {
@@ -22,8 +22,9 @@ export function useUpload({ multiple = false, validateFile }: UploadParams) {
           reject('未选择文件');
           return;
         }
-        if (validateFile && !validateFile(file)) {
-          reject('文件校验未通过');
+        let msg = validateFile && validateFile(file)
+        if (msg) {
+          reject(msg);
           return;
         }
         const formData = new FormData();
@@ -37,7 +38,7 @@ export function useUpload({ multiple = false, validateFile }: UploadParams) {
             resolve(data.data)
           })
           .catch((err) => {
-            reject(err)
+            reject(err.message)
           })
       });
       window.addEventListener(

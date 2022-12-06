@@ -17,7 +17,7 @@ export default function Front() {
         setLoading(false)
       })
       .catch((e) => {
-        message.error(e)
+        message.error(e.message)
         setLoading(false)
       })
   }, [query])

@@ -3,6 +3,7 @@ interface User {
   username: string
   password: string
   avatar: string
+  nickname: string
 }
 
 interface ApiResData<T> {
@@ -14,7 +15,7 @@ interface ApiResData<T> {
 interface Category {
   _id?: string
   label: string
-  value: string
+  value: number
 }
 
 interface Article {
@@ -23,4 +24,14 @@ interface Article {
   cover: string
   content: string
   user: any
+  category: number
+  createTime: number
+  view: number
+}
+
+interface PageList<T> {
+  page: number
+  size: number
+  total: number
+  list: T[]
 }

@@ -10,7 +10,7 @@ const Header = () => {
   const { user, categories } = useAuth()
 
   const items: MenuProps['items'] = [
-    { label: '个人中心', key: 'center' },
+    { label: <Link href="/user">个人中心</Link>, key: 'center' },
     { label: <Link href="/editor">写点啥</Link>, key: 'write' },
     { label: <a href="/api/user/logout">退出</a>, key: 'exit' },
   ];

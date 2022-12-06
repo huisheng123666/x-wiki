@@ -11,5 +11,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/api/user/info',
+  matcher: ['/api/user/info', '/editor', '/user'],
 }

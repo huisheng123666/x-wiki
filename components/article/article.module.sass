@@ -1,4 +1,7 @@
+@import "@/styles/common.sass"
+
 .article
+  margin-bottom: 20px
   display: flex
   padding-bottom: 10px
   border-bottom: 1px solid #eee
@@ -15,9 +18,11 @@
           font-size: 18px
           font-weight: 500
         &>p
+          width: 95%
           line-height: 20px
           font-size: 14px
           color: #828a92
+          @include ellipsis-l(2)
       .data
         font-size: 14px
         color: #333

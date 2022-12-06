@@ -1,10 +1,11 @@
-import {createContext, ReactNode, useContext, useEffect, useState} from 'react'
+import {createContext, ReactNode, useCallback, useContext, useEffect, useState} from 'react'
 import {post} from "@/util/http";
 
 const AuthContext = createContext<{
   user: User | undefined,
   categories: Category[],
-  setUser: (user: User | undefined) => void
+  setUser: (user: User | undefined) => void,
+  getUser: () => void
 } | undefined>(undefined)
 
 AuthContext.displayName = 'AuthContext'
@@ -13,15 +14,18 @@ export const AuthProvider = ({ children, dbCategories = [], dbUser }: {children:
   const [user, setUser] = useState<User | undefined>(dbUser)
   const [categories, setCategories] = useState(dbCategories)
 
-
-  useEffect(() => {
+  const getUser = useCallback(() => {
     post<{ data: User }>({ url: '/user/info' })
       .then(res => {
         setUser(res.data)
       })
   }, [])
 
-  return <AuthContext.Provider value={{ user, categories, setUser }}>{children}</AuthContext.Provider>
+  useEffect(() => {
+    getUser()
+  }, [getUser])
+
+  return <AuthContext.Provider value={{ user, categories, setUser, getUser }}>{children}</AuthContext.Provider>
 }
 
 export const useAuth = () => {
