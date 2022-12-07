@@ -60,7 +60,7 @@ export default function Editor() {
     return () => {
       easyMDE.current?.cleanup()
     }
-  }, [form, setEditValue])
+  }, [form, setEditValue, query])
 
   function submit(val: any) {
     const data = {

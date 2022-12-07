@@ -2,6 +2,7 @@ import {useHttp} from "@/hooks/useHttp";
 import {useCallback, useEffect, useState} from "react";
 import {Button, List, Modal, Pagination} from "antd";
 import Link from "next/link";
+import {EyeOutlined} from "@ant-design/icons";
 
 const UserArticle = () => {
   const { post, loading } = useHttp()
@@ -62,7 +63,10 @@ const UserArticle = () => {
               <Button type="primary" danger key='delete' onClick={() => deleteArticle(item._id!)}>删除</Button>
             ]}
           >
-            <List.Item.Meta title={item.title} description={item.createTime} />
+            <List.Item.Meta
+              title={item.title}
+              description={<><EyeOutlined /> {item.view}<div style={{ width: '100px', display: 'inline-block' }}/>{item.createTime}</>}
+            />
           </List.Item>)
         }
       </List>
