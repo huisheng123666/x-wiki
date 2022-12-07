@@ -21,10 +21,6 @@ export const AuthProvider = ({ children, dbCategories = [], dbUser }: {children:
       })
   }, [])
 
-  useEffect(() => {
-    getUser()
-  }, [getUser])
-
   return <AuthContext.Provider value={{ user, categories, setUser, getUser }}>{children}</AuthContext.Provider>
 }
 

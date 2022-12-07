@@ -1,5 +1,5 @@
 import Header from "../components/header/header";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import 'easymde/dist/easymde.min.css'
 import EasyMDE from "easymde";
 import {Button, Form, Input, message, Select} from "antd";
@@ -13,7 +13,7 @@ export default function Editor() {
   const easyMDE = useRef<EasyMDE>()
   const [form] = Form.useForm()
 
-  const { push } = useRouter()
+  const { push, query, back } = useRouter()
 
   const { post, loading } = useHttp()
   const { upload } = useUpload({ validateFile: validateImg })
@@ -21,6 +21,20 @@ export default function Editor() {
   const [cover, setCover] = useState('')
 
   const { categories } = useAuth()
+
+  const setEditValue = useCallback(() => {
+    post<Article, any>('/article/detail', { id: query.id })
+      .then(({ data }) => {
+        form.setFieldsValue({
+          title: data.title,
+          category: data.category,
+          cover: data.cover,
+          content: data.content
+        })
+        setCover(data.cover)
+        easyMDE.current?.value(data.content)
+      })
+  }, [post, query, form])
 
   useEffect(() => {
     const textarea = document.getElementById('my-text-area')
@@ -38,19 +52,28 @@ export default function Editor() {
       easyMDE.current?.codemirror.on('change', () => {
         form.setFieldValue('content', easyMDE.current?.value() || '')
       })
+
+      if (query.id) {
+        setEditValue()
+      }
     })
     return () => {
       easyMDE.current?.cleanup()
     }
-  }, [form])
+  }, [form, setEditValue])
 
   function submit(val: any) {
-    post('/article/add', val)
+    const data = {
+      ...val
+    }
+    if (query.id) {
+      data.id = query.id
+    }
+    post(`/article/${query.id ? 'update' : 'add'}`, data)
       .then(() => {
-        push('/')
+        query.id ? back() : push('/')
       })
       .catch(e => {
-        debugger
         message.error(e)
       })
   }
@@ -61,6 +84,12 @@ export default function Editor() {
       setCover(data)
     }).catch(e => {
       message.error(e)
+    })
+  }
+
+  function editorUpload() {
+    upload().then(data => {
+      easyMDE.current?.value(easyMDE.current?.value() + `![](${data})`)
     })
   }
 
@@ -82,7 +111,13 @@ export default function Editor() {
           <Form.Item label="封面" name="cover" rules={[{ required: true }]}>
             { !cover ? <div className="upload" onClick={uploadFile}>+</div> : <img className="cover" onClick={uploadFile} src={cover} alt="" /> }
           </Form.Item>
-          <Form.Item label="内容" name="content" rules={[{ required: true }]} style={{ marginBottom: 0 }}>
+          <Form.Item
+            label="内容"
+            name="content"
+            rules={[{ required: true }]}
+            style={{ marginBottom: 0 }}
+            extra={<Button className='editor-upload' type='link' onClick={editorUpload}>上传图片</Button>}
+          >
             <Input.TextArea id="my-text-area"></Input.TextArea>
           </Form.Item>
           <Form.Item>

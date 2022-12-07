@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 import category from "@/model/category";
+import '@/model/user'
+import '@/model/article'
+import '@/model/category'
 
 export let isDBConnect = false
 

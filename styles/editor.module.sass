@@ -4,7 +4,15 @@
     .content
       padding: 20px
       .ant-form-item
-        margin-bottom: 10px
+        margin-bottom: 10px !important
+        position: relative
+        .ant-form-item-extra
+          height: 0
+          min-height: 0
+        .editor-upload
+          position: absolute
+          right: 0
+          top: 10px
       .upload
         display: flex
         align-items: center

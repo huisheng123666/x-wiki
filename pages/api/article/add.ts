@@ -13,7 +13,7 @@ export default async function handler(
   const token = getToken(req)
   try {
     const deUser = await verifyToken(token)
-    const article = await Article.create({ ...req.body, user: deUser._id })
+    const article = await Article.create({ ...req.body, user: deUser._id, createTime: Date.now() })
     res.status(200).json({ code: 1, data: article })
   } catch (err: any) {
     res.status(200).json(genErrRes(err.message, res))

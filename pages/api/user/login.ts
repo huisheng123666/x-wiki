@@ -14,6 +14,7 @@ export default async function handler(
   const user = await userModel.findOne(req.body, { __v: 0, password: 0 })
   if (!user) {
     res.status(200).json({ code: 0, message: '用户名或密码错误' })
+    return
   }
   const token = jwt.sign({
     _id: user._id,

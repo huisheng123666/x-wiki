@@ -1,9 +1,9 @@
 @import "@/styles/common.sass"
 
 .article
-  margin-bottom: 20px
+  margin-bottom: 20px !important
   display: flex
-  padding-bottom: 10px
+  padding-bottom: 10px !important
   border-bottom: 1px solid #eee
   & :global
     .info
@@ -22,14 +22,13 @@
           line-height: 20px
           font-size: 14px
           color: #828a92
-          @include ellipsis-l(2)
+          @include ellipsis-l(3)
       .data
         font-size: 14px
         color: #333
-        .author
-          margin-right: 200px
-        .view
-          margin-left: 200px
+        &>span
+          display: inline-block
+          width: 280px
     .cover
       height: 137px
       width: 244px

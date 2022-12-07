@@ -9,13 +9,14 @@ import rehypeRaw from 'rehype-raw'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 // import {dark} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import React, {useEffect, useRef, useState} from "react";
+import {useHttp} from "@/hooks/useHttp";
 
 const ArticleDetail = ({ article }: { article: Article }) => {
-  const [isMount, setMount] = useState(false)
+  const { post } = useHttp()
 
   useEffect(() => {
-    setMount(true)
-  }, [])
+    post('/article/view', { id: article._id })
+  }, [post, article])
 
   return (
     <>

@@ -16,9 +16,10 @@ export function useHttp() {
 
   const post = useCallback(<P, D>(url: string, data: D) => {
     setLoading(true)
-    return new Promise((resolve, reject) => {
-      axPost({ url, data })
+    return new Promise<{data: P}>((resolve, reject) => {
+      axPost<{data: P}>({ url, data })
         .then(data => {
+          setLoading(false)
           if (isMount.current) {
             resolve(data)
           } else {
@@ -26,6 +27,7 @@ export function useHttp() {
           }
         })
         .catch(e => {
+          setLoading(false)
           if (e.code === 3) {
             setUser(undefined)
           }

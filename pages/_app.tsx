@@ -26,7 +26,7 @@ export default function App1({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeStart', start)
       router.events.off('routeChangeComplete', end)
     }
-  }, [])
+  }, [router])
 
   return <AuthProvider dbCategories={pageProps?.categories} dbUser={pageProps.user}>
     <Component {...pageProps} />
@@ -40,7 +40,8 @@ App1.getInitialProps = async (context: AppContext) => {
   try {
     // @ts-ignore
     if (context.ctx.req?.cookies.token) {
-      appContext.pageProps.user = await post<{ data: User }>({url: '/user/info', req: context.ctx.req})
+      const { data: user } = await post<{ data: User }>({url: '/user/info', req: context.ctx.req})
+      appContext.pageProps.user = user
     }
     return appContext
   } catch (e) {
