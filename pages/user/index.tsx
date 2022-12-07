@@ -34,7 +34,7 @@ const Index = () => {
         message.success('保存成功')
       })
       .catch(e => {
-        message.error(e.message)
+        message.error(e)
       })
   }
 
