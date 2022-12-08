@@ -29,6 +29,7 @@ export default async function handler(
     list.forEach(item => {
       item._doc.createTime = dayjs(item.createTime).format('YYYY-MM-DD')
       item._doc.liked = item.likedUser && !!item.likedUser[deUser?._id]
+      delete item._doc.likedUser
     })
     res.status(200).json({ code: 1, data: { page, size, total, list } })
   } catch (e: any) {
