@@ -20,12 +20,12 @@ pnpm build
 pnpm start
 
 ## 更新
-- 2022-12-07
+- 2022-12-08
 
   添加评论点赞功能
   
 
 <details>
-  <summary>2022-12-08</summary>
+  <summary>2022-12-07</summary>
   > 基础功能开发完毕
 </details>
