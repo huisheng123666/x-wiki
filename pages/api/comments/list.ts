@@ -21,7 +21,7 @@ export default async function handler(
       deUser = await verifyToken(token)
     } catch (err) {}
     const { page = 1, size = 10 } = req.body
-    const query = CommentModel.find(params, { __v: 0 }).sort({ createTime: -1 })
+    const query = CommentModel.find(params, { __v: 0 }).sort({ like: -1, createTime: -1 })
     query.populate('user', { username: 1, nickname: 1, avatar: 1 }).populate('relation', { username: 1, nickname: 1, avatar: 1 })
     const skipIndex = (page - 1) * size
     const list = await query.skip(skipIndex).limit(size)
