@@ -2,20 +2,20 @@
 个人wiki平台
 
 ### 简介
-使用
+使用next.js+mongodb开发的团队文档平台，文档编写使用markdown
 
-### 使用步骤
-1. 安装依赖  
+> 使用步骤
+- 安装依赖  
 pnpm install
-2. 建立本地环境变量
+- 建立本地环境变量
 ```
 // 新建文件.env.local
 DB_HOST=mongodb://127.0.0.1:27017/x-wiki // mongodb数据库链接
 JWT_SECRET=123456 // jwt密钥
 ```
-3. 开发  
+- 开发  
 pnpm dev
-4. 生产  
+- 生产  
 pnpm build  
 pnpm start
 
@@ -26,6 +26,6 @@ pnpm start
   
 
 <details>
-  <summary>2022-12-07</summary>
+  <summary>2022-12-08</summary>
   > 基础功能开发完毕
 </details>
