@@ -15,7 +15,7 @@ export default async function handler(
     const { page = 1, size = 10 } = req.body
     const token = getToken(req)
     const deUser = await verifyToken(token)
-    const query = article.find({ user: deUser._id }, { __v: 0 }).sort({ createTime: -1 })
+    const query = article.find({ user: deUser._id }, { __v: 0 }).sort({ view: -1, createTime: -1 })
     const skipIndex = (page - 1) * size
     const list = await query.skip(skipIndex).limit(size)
     const total = await article.count({ user: deUser._id })
