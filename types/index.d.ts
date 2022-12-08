@@ -35,3 +35,18 @@ interface PageList<T> {
   total: number
   list: T[]
 }
+
+interface Comment {
+  _id?: string
+  article: string
+  content: string
+  user: any
+  parent: string
+  relation: any
+  like: number
+  createTime: number
+  likedUser: {
+    [key: string]: boolean
+  },
+  liked?: boolean
+}

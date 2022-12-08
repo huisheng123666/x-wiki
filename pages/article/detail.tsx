@@ -10,6 +10,8 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 // import {dark} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import React, {useEffect, useRef, useState} from "react";
 import {useHttp} from "@/hooks/useHttp";
+import {Button, Form, Input, List} from "antd";
+import Comments from "@/components/comments/comments";
 
 const ArticleDetail = ({ article }: { article: Article }) => {
   const { post } = useHttp()
@@ -49,6 +51,8 @@ const ArticleDetail = ({ article }: { article: Article }) => {
             }
           }}
         >{article.content}</ReactMarkdown>
+
+        <Comments articleId={article._id!} />
       </div>
     </>
   )

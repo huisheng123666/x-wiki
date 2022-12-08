@@ -3,6 +3,7 @@ import category from "@/model/category";
 import '@/model/user'
 import '@/model/article'
 import '@/model/category'
+import '@/model/comment'
 
 export let isDBConnect = false
 
