@@ -1,4 +1,4 @@
-import {Button, Form, Input, message} from "antd";
+import {Button, Form, Input, message, Spin} from 'antd';
 import {useAuth} from "@/context/auth-context";
 import {useUpload} from "@/hooks/useUpload";
 import {validateImg} from "@/pages/editor";
@@ -8,7 +8,7 @@ import {useEffect} from "react";
 const Userinfo = () => {
   const { user, setUser, getUser } = useAuth()
   const [form] = Form.useForm()
-  const { upload } = useUpload({ validateFile: validateImg })
+  const { upload, loading: uploadLoading } = useUpload({ validateFile: validateImg })
   const { post, loading } = useHttp()
 
   useEffect(() => {
@@ -50,7 +50,10 @@ const Userinfo = () => {
         form={form}
       >
         <Form.Item label="头像" name="avatar">
-          <img className="avatar" src={user?.avatar} alt="" onClick={uploadAvatar} />
+          <div className="avatar-upload">
+            <img className="avatar" src={user?.avatar} alt="" onClick={uploadAvatar} />
+            {uploadLoading ? <Spin className='avatar-loading' /> : null}
+          </div>
         </Form.Item>
         <Form.Item label="用户名">
           <span>{user?.username}</span>

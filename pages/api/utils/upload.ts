@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable, {File} from 'formidable'
+import {sleep} from '../../../util';
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,6 +8,7 @@ export default async function handler(
 ) {
   try {
     const path = await writeFile(req)
+    await sleep(1000)
     res.status(200).json({ code: 1, data: path })
   } catch (err) {
     res.status(200).json({ code: 0, message: '上传失败' })

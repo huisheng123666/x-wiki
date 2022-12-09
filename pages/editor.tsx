@@ -8,6 +8,9 @@ import {useUpload} from "@/hooks/useUpload";
 import { useRouter } from "next/router";
 import {useHttp} from "@/hooks/useHttp";
 import {useAuth} from "@/context/auth-context";
+import {Spin} from 'antd/lib';
+import {marked} from 'marked';
+import use = marked.use;
 
 export default function Editor() {
   const easyMDE = useRef<EasyMDE>()
@@ -78,18 +81,30 @@ export default function Editor() {
       })
   }
 
+  const [coverLoading, setCoverLoading] = useState(false)
+
   function uploadFile() {
+    setCoverLoading(true)
     upload().then(data => {
       form.setFieldValue('cover', data)
       setCover(data)
+      setCoverLoading(false)
     }).catch(e => {
       message.error(e)
+      setCoverLoading(false)
     })
   }
 
+  const [editorUploadLoading, setEditorUploadLoading] = useState(false)
+
   function editorUpload() {
+    setEditorUploadLoading(true)
     upload().then(data => {
       easyMDE.current?.value(easyMDE.current?.value() + `![](${data})`)
+      setEditorUploadLoading(false)
+    }).catch(e => {
+      message.error(e)
+      setEditorUploadLoading(false)
     })
   }
 
@@ -109,16 +124,22 @@ export default function Editor() {
             <Select style={{ width: '400px' }} options={categories} />
           </Form.Item>
           <Form.Item label="封面" name="cover" rules={[{ required: true }]}>
-            { !cover ? <div className="upload" onClick={uploadFile}>+</div> : <img className="cover" onClick={uploadFile} src={cover} alt="" /> }
+            <div className="upload-wrapper">
+              { !cover ?
+                <div className="upload" onClick={uploadFile}>+</div> :
+                <img className="cover" onClick={uploadFile} src={cover} alt="" />
+              }
+              {coverLoading ? <Spin className="upload-loading" /> : null}
+            </div>
           </Form.Item>
           <Form.Item
             label="内容"
             name="content"
             rules={[{ required: true }]}
             style={{ marginBottom: 0 }}
-            extra={<Button className='editor-upload' type='link' onClick={editorUpload}>上传图片</Button>}
+            extra={<Button loading={editorUploadLoading} className='editor-upload' type='link' onClick={editorUpload}>上传图片</Button>}
           >
-            <Input.TextArea id="my-text-area"></Input.TextArea>
+            <Input.TextArea id="my-text-area"/>
           </Form.Item>
           <Form.Item>
             <Button loading={loading} type='primary' htmlType="submit">提交</Button>

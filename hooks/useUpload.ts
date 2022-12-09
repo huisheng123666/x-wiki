@@ -8,6 +8,7 @@ interface UploadParams {
 
 export function useUpload({ multiple = false, validateFile }: UploadParams) {
   const [urls, setUrls] = useState<string[]>([])
+  const [loading, setLoading] = useState(false)
 
   const upload = useCallback(() => {
     const input = document.createElement('input');
@@ -29,15 +30,18 @@ export function useUpload({ multiple = false, validateFile }: UploadParams) {
         }
         const formData = new FormData();
         formData.append('file', file);
+        setLoading(true)
         post<{ data: string }>({ url: '/utils/upload', data: formData })
           .then(data => {
             setUrls([
               ...urls,
               data.data
             ])
+            setLoading(false)
             resolve(data.data)
           })
           .catch((err) => {
+            setLoading(false)
             reject(err.message)
           })
       });
@@ -57,6 +61,7 @@ export function useUpload({ multiple = false, validateFile }: UploadParams) {
 
   return {
     urls,
-    upload
+    upload,
+    loading
   }
 }
