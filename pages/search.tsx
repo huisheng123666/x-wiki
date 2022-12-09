@@ -31,7 +31,7 @@ const Search = () => {
     return {
       ...item,
       title: item.title.replace(new RegExp(params.current.searchKey, 'i'), `<span class="highlight">${params.current.searchKey}</span>`),
-      content: item.content.replace(new RegExp(params.current.searchKey, 'i'), `<span class="highlight">${params.current.searchKey}</span>`)
+      content: item.content.replace(new RegExp(params.current.searchKey, 'ig'), `<span class="highlight">${params.current.searchKey}</span>`)
     }
   })
 
