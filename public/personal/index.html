@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="/personal/assets/img/favicon.png" type="image/x-icon">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="/personal/assets/css/swiper-bundle.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="/personal/assets/css//styles.css">
+
+        <title> Responsive portfolio website Ansel </title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">XMW</a>
+
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">
+                                <i class="bx bx-home-alt"></i>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">
+                                <i class="bx bx-user"></i>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#skills" class="nav__link">
+                                <i class="bx bx-book"></i>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#work" class="nav__link">
+                                <i class="bx bx-briefcase-alt-2"></i>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#contact" class="nav__link">
+                                <i class="bx bx-message-square-detail"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Theme change button -->
+                <i class="bx bx-moon change-theme" id="theme-button"></i>
+            </nav>
+        </header>
+
+        <!--=============== MAIN ===============-->
+        <main class="main">
+            <!--=============== HOME ===============-->
+            <section class="home section" id="home">
+                <div class="home__container container grid">
+                    <div class="home__data">
+                         <span class="home__greeting">Hello, I'm</span>
+                         <h1 class="home__name">胥梦伟</h1>
+                         <h3 class="home__education">前端开发</h3>
+
+                         <div class="home__buttons">
+                            <a href="/personal/assets/pdf/Xmw-Cv.pdf" class="button button--ghost">
+                                下载简历
+                            </a>
+                            <a href="#about" class="button">个人简介</a>
+                         </div>
+                    </div>
+
+                    <div class="home__handle">
+                        <img class="home__img" src="/personal/assets/img/personal.png" alt="">
+                    </div>
+
+                    <div class="home__social">
+                        <a href="https://www.linkedin.cn/incareer/in/%E6%A2%A6%E4%BC%9F-%E8%83%A5-50982824a" target="_blank" class="home__social-link">
+                            <i class="bx bxl-linkedin-square"></i>
+                        </a>
+                        <a href="https://github.com/huisheng123666" target="_blank" class="home__social-link">
+                            <i class="bx bxl-github"></i>
+                        </a>
+                        <!-- <a href="https://dribbble.com/" target="_blank" class="home__social-link">
+                            <i class="bx bxl-dribbble"></i>
+                        </a> -->
+                    </div>
+
+                    <a href="#about" class="home__scroll">
+                        <i class="bx bx-mouse home__scroll-icon"></i>
+                        <span class="home__scroll-name">Scroll Down</span>
+                    </a>
+                </div>
+            </section>
+
+            <!--=============== ABOUT ===============-->
+            <section class="about section" id="about">
+                <span class="section__subtitle">My Intro</span>
+                <h2 class="section__title">关于我</h2>
+
+                <div class="about__container container grid">
+                    <img src="/personal/assets/img/my2.png" alt="" class="about__img">
+
+                    <div class="about__data">
+                        <div class="about__info">
+                            <div class="about__box">
+                                <i class="bx bx-award about__icon"></i>
+                                <h3 class="about__title">年限</h3>
+                                <span class="about__subtitle">6年</span>
+                            </div>
+                            <div class="about__box">
+                                <i class="bx bx-briefcase-alt about__icon"></i>
+                                <h3 class="about__title">完成</h3>
+                                <span class="about__subtitle">20 + 项目</span>
+                            </div>
+                            <div class="about__box">
+                                <i class="bx bx-support about__icon"></i>
+                                <h3 class="about__title">支持</h3>
+                                <span class="about__subtitle">上线 10+</span>
+                            </div>
+                        </div>
+
+                        <p class="about__description">
+                            作为一名前端开发人员，使用 UI / UX 用户界面创建网页、小程序、app，
+                            工作多年，许多公司都对我的工作表示认可，曾获年度优秀员工。
+                        </p>
+
+                        <a href="#contact" class="button">立即联系</a>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== SKILLS ===============-->
+            <section class="skills section" id="skills">
+                <span class="section__subtitle">My abilities</span>
+                <h2 class="section__title">我的经验</h2>
+
+                <div class="skills__container container grid">
+                    <div class="skills__content">
+                        <h3 class="skills__title">前端开发</h3>
+
+                        <div class="skills__box">
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">VUE</h3>
+                                        <span class="skills__level">高级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">flutter</h3>
+                                        <span class="skills__level">中级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">React</h3>
+                                        <span class="skills__level">中级</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">webpack</h3>
+                                        <span class="skills__level">中级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">CI/CD</h3>
+                                        <span class="skills__level">初级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">Echarts</h3>
+                                        <span class="skills__level">中级</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills__content">
+                        <h3 class="skills__title">后端开发</h3>
+
+                        <div class="skills__box">
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">nginx</h3>
+                                        <span class="skills__level">初级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">Node Js</h3>
+                                        <span class="skills__level">中级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">Golang</h3>
+                                        <span class="skills__level">初级</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">MySQL</h3>
+                                        <span class="skills__level">初级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">MongoDB</h3>
+                                        <span class="skills__level">初级</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="bx bxs-badge-check"></i>
+
+                                    <div>
+                                        <h3 class="skills__name">Linux</h3>
+                                        <span class="skills__level">初级</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== SERVICES ===============-->
+            <section class="services section">
+                <span class="section__subtitle">My Services</span>
+                <h2 class="section__title">求职意向</h2>
+
+                <div class="services__container container grid">
+                    <div class="services__card">
+                        <h3 class="services__title">前端 <br> 开发</h3>
+
+                        <span class="services__button">
+                            See more <i class="bx bx-right-arrow-alt services__icon"></i>
+                        </span>
+
+                        <div class="services__modal">
+                            <div class="services__modal-content">
+                                <i class="bx bx-x services__modal-close"></i>
+
+                                <h3 class="services__modal-title">前端开发</h3>
+                                <p class="services__modal-description">
+                                    5年以上服务经验，为客户和公司提供高质量的工作。
+                                </p>
+
+                                <ul class="services__modal-list">
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            PC、移动端网站开发
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            小程序、公众号开发
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            跨平台APP开发
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            数据可视化大屏开发
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="services__card">
+                        <h3 class="services__title">前端 <br> 架构</h3>
+
+                        <span class="services__button">
+                            See more <i class="bx bx-right-arrow-alt services__icon"></i>
+                        </span>
+
+                        <div class="services__modal">
+                            <div class="services__modal-content">
+                                <i class="bx bx-x services__modal-close"></i>
+
+                                <h3 class="services__modal-title">前端架构</h3>
+                                <p class="services__modal-description">
+                                    2年以上架构经验，为团队提供稳定的基础架构设施。
+                                </p>
+
+                                <ul class="services__modal-list">
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            定制适合团队的脚手架。
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            开发webpack plugin提高开发效率
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            为团队制定代码规范
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            使用CI/CD简化发布流程，减少人为干预
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="services__card">
+                        <h3 class="services__title">跨平台 <br> 开发</h3>
+
+                        <span class="services__button">
+                            See more <i class="bx bx-right-arrow-alt services__icon"></i>
+                        </span>
+
+                        <div class="services__modal">
+                            <div class="services__modal-content">
+                                <i class="bx bx-x services__modal-close"></i>
+
+                                <h3 class="services__modal-title">跨平台开发</h3>
+                                <p class="services__modal-description">
+                                    2年以上跨平台开发经验，为公司节省成本，减少原生开发的依赖。
+                                </p>
+
+                                <ul class="services__modal-list">
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            使用uni-app，taro开发跨平台小程序
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            使用flutter开发Android/ios APP
+                                        </p>
+                                    </li>
+
+                                    <li class="services__modal-item">
+                                        <i class="bx bx-check services__modal-icon"></i>
+                                        <p class="services__modal-info">
+                                            使用react-native开发Android/ios APP
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!--=============== WORK ===============-->
+            <section class="work section" id="work">
+                <span class="section__subtitle">My Portfolio</span>
+                <h2 class="section__title">近期作品</h2>
+
+                <div class="work__filters">
+                    <span class="work__item active-work" data-filter="all">All</span>
+                    <span class="work__item" data-filter=".web">Web</span>
+                    <span class="work__item" data-filter=".movil">小程序</span>
+                    <span class="work__item" data-filter=".design">APP</span>
+                </div>
+
+                <div class="work__container container grid">
+                    <div class="work__card mix web">
+                        <img src="/personal/assets/img/x-wiki.png" alt="" class="work__img">
+
+                        <h3 class="work__title">X-WIKI</h3>
+
+                        <a href="/" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+                    <div class="work__card mix web">
+                        <img src="/personal/assets/img/noko.png" alt="" class="work__img">
+
+                        <h3 class="work__title">响应式可变主题网站</h3>
+
+                        <a href="/api/static/custom" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="work__card mix web">
+                        <img src="/personal/assets/img/nasi@2x.png" alt="" class="work__img">
+
+                        <h3 class="work__title">钠斯直播</h3>
+
+                        <a href="https://live.nasinet.com/" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="work__card mix movil">
+                        <img src="/personal/assets/img/hbgj.png" alt="" class="work__img">
+
+                        <h3 class="work__title">航班管家</h3>
+
+                        <a href="https://h5.133.cn/hangban/vue/jipiao/home" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="work__card mix movil">
+                        <img src="/personal/assets/img/xlxf.png" alt="" class="work__img">
+
+                        <h3 class="work__title">小鹿选房</h3>
+
+                        <a href="https://www.xiaoluxt.com/" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="work__card mix web">
+                        <img src="/personal/assets/img/x-admin.png" alt="" class="work__img">
+
+                        <h3 class="work__title">x-admin</h3>
+
+                        <a href="https://github.com/huisheng123666/x-admin" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="work__card mix design">
+                        <img src="/personal/assets/img/player.png" alt="" class="work__img">
+
+                        <h3 class="work__title">X MOVIE</h3>
+
+                        <a href="https://github.com/huisheng123666/x_m" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="work__card mix design">
+                        <img src="/personal/assets/img/chicken-music.jpg" alt="" class="work__img">
+
+                        <h3 class="work__title">chicken music</h3>
+
+                        <a href="https://github.com/huisheng123666/rn-chicken-music" target="_blank" class="work__button">
+                            Demo <i class="bx bx-right-arrow-alt work__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== TESTIMONIALS ===============-->
+            <!-- <section class="testimonial section" id="testimonial">
+                <span class="section__subtitle">My clients say</span>
+                <h2 class="section__title">Testimonial</h2>
+
+                <div class="testimonial__container container swiper">
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__card swiper-slide">
+                            <img src="/personal/assets/img/testimonial1.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">Jhon Doe</h3>
+                            <p class="testimonial__description">
+                                A really good job, all aspects of the project were
+                                followed step by step and with good results.
+                            </p>
+                        </div>
+
+                        <div class="testimonial__card swiper-slide">
+                            <img src="/personal/assets/img/testimonial2.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">Paula Vusy</h3>
+                            <p class="testimonial__description">
+                                A really good job, all aspects of the project were
+                                followed step by step and with good results.
+                            </p>
+                        </div>
+
+                        <div class="testimonial__card swiper-slide">
+                            <img src="/personal/assets/img/testimonial3.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">Sara Cill</h3>
+                            <p class="testimonial__description">
+                                A really good job, all aspects of the project were
+                                followed step by step and with good results.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section> -->
+
+            <!--=============== CONTACT ===============-->
+            <section class="contact section" id="contact">
+                <span class="section__subtitle">Get in touch</span>
+                <h2 class="section__title">Contact Me</h2>
+
+                <div class="contact__container container grid">
+                    <div class="contact__content">
+                        <h3 class="contact__title">Talk to me</h3>
+
+                        <div class="contact__info">
+                            <div class="contact__card">
+                                <i class="bx bx-mail-send contact__card-icon"></i>
+                                <h3 class="contact__card-title">邮箱</h3>
+                                <span class="contact__card-data">571692056@qq.com</span>
+
+                                <a href="mailto:571692056@qq.com" target="_blank" class="contact__button">
+                                    Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                                </a>
+                            </div>
+
+                            <div class="contact__card">
+                                <i class="bx bxl-whatsapp contact__card-icon"></i>
+                                <h3 class="contact__card-title">电话</h3>
+                                <span class="contact__card-data">18871762197</span>
+
+                                <a href="tel:18871762197" target="_blank" class="contact__button">
+                                    Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                                </a>
+                            </div>
+
+                            <!-- <div class="contact__card">
+                                <i class="bx bxl-messenger"></i>
+                                <h3 class="contact__card-title">Messenger</h3>
+                                <span class="contact__card-data">user.fb123</span>
+
+                                <a href="https://m.me/bedimcode" target="_blank" class="contact__button">
+                                    Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class="contact__content">
+                        <h3 class="contact__title">Write me your project</h3>
+
+                        <form action="" class="contact__form">
+                            <div class="contact__form-div">
+                                <label for="" class="contact__form-tag">Names</label>
+                                <input type="text" placeholder="Insert your name" class="contact__form-input">
+                            </div>
+
+                            <div class="contact__form-div">
+                                <label for="" class="contact__form-tag">Mail</label>
+                                <input type="email" placeholder="Insert your email" class="contact__form-input">
+                            </div>
+
+                            <div class="contact__form-div contact__form-area">
+                                <label for="" class="contact__form-tag">Project</label>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Write your project" class="contact__form-input"></textarea>
+                            </div>
+
+                            <button class="button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!--=============== FOOTER ===============-->
+        <footer class="footer">
+            <div class="footer__container container">
+                <h1 class="footer__title">XMW</h1>
+
+                <ul class="footer__list">
+                    <li>
+                        <a href="#about" class="footer__link">关于我</a>
+                    </li>
+                    <li>
+                        <a href="#work" class="footer__link">作品</a>
+                    </li>
+                    <li>
+                        <a href="#skills" class="footer__link">经验</a>
+                    </li>
+                </ul>
+<!--
+                <ul class="footer__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class="bx bxl-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <i class="bx bxl-instagram"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <i class="bx bxl-twitter"></i>
+                    </a>
+                </ul> -->
+
+                <span class="footer__copy">&#169; 网站出处：<a href="https://www.youtube.com/watch?v=oy8dSsK57Ps" target="_blank">Bedimcode 喜欢就订阅他</a> 感谢大佬，很久没有原生开发了</span>
+            </div>
+        </footer>
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="/personal/assets/js/scrollreveal.min.js"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="/personal/assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MIXITUP FILTER ===============-->
+        <script src="/personal/assets/js/mixitup.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="/personal/assets/js/main.js"></script>
+    </body>
+</html>

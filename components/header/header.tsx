@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import styles from './header.module.sass'
 import { useRouter } from 'next/router'
-import { CaretDownOutlined } from "@ant-design/icons";
-import { Dropdown, MenuProps } from "antd";
+import { CaretDownOutlined, SearchOutlined } from "@ant-design/icons";
+import {Dropdown, Form, Input, MenuProps} from "antd";
 import {useAuth} from "@/context/auth-context";
 
 const Header = () => {
-  const { pathname, query } = useRouter()
+  const { pathname, query, push, replace } = useRouter()
   const { user, categories } = useAuth()
 
   const items: MenuProps['items'] = [
@@ -14,6 +14,15 @@ const Header = () => {
     { label: <Link href="/editor">写点啥</Link>, key: 'write' },
     { label: <a href="/api/user/logout">退出</a>, key: 'exit' },
   ];
+
+  function search(val: { searchKey: string }) {
+    const url = '/search?searchKey=' + (val.searchKey || '')
+    if (pathname.includes('search')) {
+      replace(url)
+    } else {
+      push(url)
+    }
+  }
 
   return (
     <div className={styles.header}>
@@ -32,6 +41,14 @@ const Header = () => {
               </Link>)
           }
         </div>
+
+        {
+          pathname.includes('search') ? null : <Form style={{ marginRight: '20px' }} onFinish={search}>
+            <Form.Item name="searchKey" style={{ marginBottom: 0 }} initialValue={query.searchKey || ''}>
+              <Input placeholder="请输入关键字" suffix={<SearchOutlined />} />
+            </Form.Item>
+          </Form>
+        }
 
         {
           user ? <Dropdown menu={{items}}>

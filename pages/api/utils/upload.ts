@@ -1,9 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable, {File} from 'formidable'
-// import { v4 as uuid } from 'uuid'
-import path from "path";
-import {PassThrough, Writable} from "stream";
-import * as fs from "fs";
 
 export default async function handler(
   req: NextApiRequest,

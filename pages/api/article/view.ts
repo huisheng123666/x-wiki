@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect, {isDBConnect} from "@/lib/db";
 import article from "@/model/article";
 import {genErrRes} from "@/util";
-import { Types } from "mongoose";
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,0 +1,17 @@
+@import "common"
+.search
+  width: 1200px
+  margin: 0 auto
+  padding-top: 30px
+  padding-bottom: 40px
+  & :global
+    .search-form
+      width: 400px
+      margin: 0 auto
+    .highlight
+      color: red
+    .article-content
+      @include ellipsis-l(4)
+    .pagination
+      display: flex
+      justify-content: flex-end

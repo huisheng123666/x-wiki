@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect, {isDBConnect} from "@/lib/db";
 import {genErrRes, getToken, verifyToken} from "@/util";
 import userModel from "@/model/user";
-import {setCookie} from "@/util/cookies";
 
 export default async function handler(
   req: NextApiRequest,

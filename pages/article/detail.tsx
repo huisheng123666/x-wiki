@@ -10,7 +10,6 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 // import {dark} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import React, {useEffect, useRef, useState} from "react";
 import {useHttp} from "@/hooks/useHttp";
-import {Button, Form, Input, List} from "antd";
 import Comments from "@/components/comments/comments";
 
 const ArticleDetail = ({ article }: { article: Article }) => {
@@ -26,7 +25,7 @@ const ArticleDetail = ({ article }: { article: Article }) => {
       <div className={styles.detail}>
         <h2>{article.title}</h2>
         <p>
-          <span>作者：{article.user.username}</span>
+          <span>作者：{article.user?.username}</span>
           <span>阅读数：{article.view}</span>
           <span>创建时间：{article.createTime}</span>
         </p>

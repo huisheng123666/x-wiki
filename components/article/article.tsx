@@ -10,7 +10,7 @@ const Article = ({ article }: { article: Article }) => {
         <p>{article.content}</p>
       </div>
       <div className="data">
-        <span className="author">作者：{article.user.nickname || article.user.username}</span>
+        <span className="author">作者：{article.user?.nickname || article.user?.username}</span>
         <span>创建时间：{article.createTime}</span>
         <span className="view"><EyeOutlined /> {article.view}</span>
       </div>

@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useCallback, useContext, useEffect, useState} from 'react'
+import {createContext, ReactNode, useCallback, useContext, useState} from 'react'
 import {post} from "@/util/http";
 
 const AuthContext = createContext<{

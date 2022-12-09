@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import {useEffect} from "react";
 import NProgress from "nprogress";
 import 'nprogress/nprogress.css'
+import Head from "next/head";
 
 export default function App1({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -29,6 +30,9 @@ export default function App1({ Component, pageProps }: AppProps) {
   }, [router])
 
   return <AuthProvider dbCategories={pageProps?.categories} dbUser={pageProps.user}>
+    <Head>
+      <title>x-wiki</title>
+    </Head>
     <Component {...pageProps} />
   </AuthProvider>
 }

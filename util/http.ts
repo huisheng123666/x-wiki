@@ -1,6 +1,5 @@
 import axios from 'axios'
 import {axiosOptions} from "@/config";
-import header from "@/components/header/header";
 
 const instance = axios.create(axiosOptions)
 

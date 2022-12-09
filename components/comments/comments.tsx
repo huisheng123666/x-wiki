@@ -1,5 +1,5 @@
 import {Avatar, Button, Form, Input, List, message, Pagination} from "antd";
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useRef, useState} from "react";
 import {useHttp} from "@/hooks/useHttp";
 import {usePagination} from "@/hooks/usePagination";
 import ChildrenComments from "@/components/comments/childrenComments";
@@ -13,7 +13,7 @@ const Comments = ({ articleId }: IProps) => {
   const { post } = useHttp()
   const [form] = Form.useForm()
 
-  const { pagination, total, changePage, getList, list, loading } = usePagination<Comment>({ url: '/comments/list', query: { article: articleId, parent: '' } })
+  const { pagination, total, changePage, getList, list, loading } = usePagination<Comment>({ url: '/comments/list', query: useRef({ article: articleId, parent: '' }) })
   const [current, setCurrent] = useState('')
 
   const [submitLoading, setSubmitLoading] = useState(false)
@@ -58,13 +58,13 @@ const Comments = ({ articleId }: IProps) => {
               [
                 <span key='time'>{item.createTime}</span>,
                 <LikeButton key='like' comment={item} />,
-                <Button key="rely" size="small" onClick={() => setCurrent(item._id!)}>回复</Button>
+                <Button key="rely" size="small" onClick={() => setCurrent(current === item._id! ? '' : item._id!)}>回复</Button>
               ]
             }
           >
             <List.Item.Meta
-              avatar={<Avatar src={item.user.avatar} />}
-              title={<span>{item.user.nickname || item.user.username}</span>}
+              avatar={<Avatar src={item.user?.avatar} />}
+              title={<span>{item.user?.nickname || item.user?.username}</span>}
               description={<div>
                 {item.content}
               </div>}

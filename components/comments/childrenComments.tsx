@@ -1,6 +1,6 @@
 import {Avatar, Button, Form, Input, List, message, Pagination} from "antd";
 import {usePagination} from "@/hooks/usePagination";
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useRef, useState} from "react";
 import {useHttp} from "@/hooks/useHttp";
 import ChildrenReply from "@/components/comments/childrenReply";
 import LikeButton from "@/components/comments/likeButton";
@@ -9,7 +9,7 @@ const ChildrenComments = ({ parent, articleId }: { parent: string, articleId: st
   const [form] = Form.useForm()
   const { post } = useHttp()
 
-  const { pagination, total, changePage, getList, list, loading } = usePagination<Comment>({ url: '/comments/list', query: { parent } })
+  const { pagination, total, changePage, getList, list, loading } = usePagination<Comment>({ url: '/comments/list', query: useRef({ parent }) })
 
   const [submitLoading, setSubmitLoading] = useState(false)
   const [current, setCurrent] = useState('')
@@ -57,25 +57,32 @@ const ChildrenComments = ({ parent, articleId }: { parent: string, articleId: st
             [
               <span key='time'>{item.createTime}</span>,
               <LikeButton key='like' comment={item} />,
-              <Button key="rely" size="small" onClick={() => setCurrent(item._id!)}>回复</Button>
+              <Button key="rely" size="small" onClick={() => setCurrent(current === item._id! ? '' : item._id!)}>回复</Button>
             ]
           }
         >
           <List.Item.Meta
-            avatar={<Avatar src={item.user.avatar} />}
+            avatar={<Avatar src={item.user?.avatar} />}
             title={
               <div>
-                {item.user.nickname || item.user.username}
+                {item.user?.nickname || item.user?.username}
                 {item.relation ? <span style={{color: 'orange'}}> &gt; {item.relation?.nickname || item.relation?.username}</span> : null}
               </div>
             }
             description={item.content}
           />
-          { current === item._id ? <ChildrenReply submit={submit} userId={item.user._id} /> : null }
+          { current === item._id ? <ChildrenReply submit={submit} userId={item.user?._id} /> : null }
         </List.Item>)
       }
       <List.Item className="pagination">
-        { total > 0 ? <Pagination current={pagination.page} pageSize={pagination.size} total={total} onChange={changePage} showSizeChanger={false} /> : null }
+        { total > 0 ? <Pagination
+          size="small"
+          current={pagination.page}
+          pageSize={pagination.size}
+          total={total}
+          onChange={changePage}
+          showSizeChanger={false}
+        /> : null }
       </List.Item>
     </List>
   )

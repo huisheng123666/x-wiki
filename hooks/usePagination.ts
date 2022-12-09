@@ -1,12 +1,12 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {MutableRefObject, useCallback, useEffect, useState} from "react";
 import {useHttp} from "@/hooks/useHttp";
 
 interface PParams {
   url: string
-  query?: any
+  query?: MutableRefObject<any>
 }
 
-export function usePagination<T>({ url, query = {} }: PParams) {
+export function usePagination<T>({ url, query }: PParams) {
   const { post, loading } = useHttp()
 
   const [pagination, setPagination] = useState({
@@ -20,7 +20,7 @@ export function usePagination<T>({ url, query = {} }: PParams) {
   const getList = useCallback((page?: number) => {
     const data = {
       ...pagination,
-      ...query
+      ...query?.current
     }
     if (page) {
       data.page = page
@@ -29,7 +29,7 @@ export function usePagination<T>({ url, query = {} }: PParams) {
       setTotal(res.data.total)
       setList(res.data.list)
     })
-  }, [pagination, post, url, query])
+  }, [pagination, post, query, url])
 
   const changePage = useCallback((page: number) => {
     setPagination(prevState => ({

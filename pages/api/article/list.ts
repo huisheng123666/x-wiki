@@ -12,12 +12,16 @@ export default async function handler(
     await dbConnect()
   }
   try {
+    const { category, searchKey } = req.body
     const params: any = {}
-    if (req.body.category) {
-      params.category = req.body.category
+    if (category) {
+      params.category = category
+    }
+    if (searchKey) {
+      params.$or = [{ title: new RegExp(searchKey, 'i') }, { content: new RegExp(searchKey, 'i') }]
     }
     const { page = 1, size = 10 } = req.body
-    const query = article.find(params, { __v: 0 }).sort({ createTime: -1 })
+    const query = article.find(params, { __v: 0 }).sort({ view: -1, createTime: -1 })
     query.populate('user', { username: 1, nickname: 1, _id: 0 })
     const skipIndex = (page - 1) * size
     const list = await query.skip(skipIndex).limit(size)
