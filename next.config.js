@@ -10,7 +10,7 @@ const nextConfig = {
   },
   experimental: {
     allowMiddlewareResponseBody: true,
-  },
+  }
 }
 
 module.exports = nextConfig

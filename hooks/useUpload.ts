@@ -48,7 +48,7 @@ export function useUpload({ multiple = false, validateFile }: UploadParams) {
             if (isCancel) {
               reject('未选择文件');
             }
-          }, 100);
+          }, 300);
         },
         { once: true }
       );
