@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prd": "pm2 start npm --name x-wiki --run start"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
