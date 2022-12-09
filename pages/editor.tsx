@@ -9,8 +9,6 @@ import { useRouter } from "next/router";
 import {useHttp} from "@/hooks/useHttp";
 import {useAuth} from "@/context/auth-context";
 import {Spin} from 'antd/lib';
-import {marked} from 'marked';
-import use = marked.use;
 
 export default function Editor() {
   const easyMDE = useRef<EasyMDE>()
