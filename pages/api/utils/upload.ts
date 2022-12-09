@@ -16,7 +16,7 @@ export default async function handler(
 function writeFile(req: NextApiRequest) {
   const form = formidable({
     keepExtensions: true,
-    uploadDir: './public/imgs'
+    uploadDir: './upimgs'
     // fileWriteStreamHandler: (file: any) => {
     //   const pass = new PassThrough();
     //   const target = path.join('./public/imgs', '123.png');
@@ -33,7 +33,7 @@ function writeFile(req: NextApiRequest) {
       if (err) {
         reject(err)
       } else {
-        resolve('/imgs/' + (files.file as File).newFilename)
+        resolve('/api/img/' + (files.file as File).newFilename)
       }
     })
   })
