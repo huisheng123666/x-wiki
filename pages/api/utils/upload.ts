@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable, {File} from 'formidable'
-import {sleep} from '../../../util';
+import {sleep} from '@/util';
 
 export default async function handler(
   req: NextApiRequest,
