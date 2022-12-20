@@ -14,7 +14,6 @@ export default function Front() {
     post({ url: `/user/${query.register ? 'register' : 'login'}`, data: form })
       .then((data) => {
         location.replace('/')
-        setLoading(false)
       })
       .catch((e) => {
         message.error(e.message)

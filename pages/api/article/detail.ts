@@ -12,7 +12,10 @@ export default async function handler(
     await dbConnect()
   }
   try {
-    const art = await article.findOne({ _id: req.body.id }, { __v: 0 }).populate('user', 'username')
+    const art = await article.findOne({ _id: req.body.id }, { __v: 0 }).populate('user', {
+      username: 1,
+      nickname: 1
+    })
     if (!art) {
       res.status(200).json({ code: 0, message: '文章已删除' })
       return

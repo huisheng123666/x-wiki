@@ -26,7 +26,7 @@ export default async function handler(
     const skipIndex = (page - 1) * size
     const list = await query.skip(skipIndex).limit(size)
     const total = await article.count(params)
-    const regex = /(<([^>]+)>)/ig
+    const regex = /<\/?.+?\/?>/g
     list.forEach(item => {
       item._doc.createTime = dayjs(item.createTime).format('YYYY-MM-DD')
       item._doc.content = item._doc.content.replace(regex, '')

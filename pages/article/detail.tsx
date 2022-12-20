@@ -25,7 +25,7 @@ const ArticleDetail = ({ article }: { article: Article }) => {
       <div className={styles.detail}>
         <h2>{article.title}</h2>
         <p>
-          <span>作者：{article.user?.username}</span>
+          <span>作者：{article.user?.nickname || article.user?.username}</span>
           <span>阅读数：{article.view}</span>
           <span>创建时间：{article.createTime}</span>
         </p>
