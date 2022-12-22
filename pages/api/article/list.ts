@@ -15,7 +15,7 @@ export default async function handler(
     const { category, searchKey } = req.body
     const params: any = {}
     if (category) {
-      params.category = category
+      params.category = category;
     }
     if (searchKey) {
       params.$or = [{ title: new RegExp(searchKey, 'i') }, { content: new RegExp(searchKey, 'i') }]
