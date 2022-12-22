@@ -1,0 +1,17 @@
+name: x-wiki CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16x]
+
+    steps:
+      - run: sshpass -p ${{secrets.SECRET}} ssh -o StrictHostKeyChecking=no ${{secrets.NAME_USER}} 'cd ${{secrets.PATH}} && git pull origin main && npm run build'
