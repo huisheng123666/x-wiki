@@ -52,7 +52,7 @@ export function useUpload({ multiple = false, validateFile }: UploadParams) {
             if (isCancel) {
               reject('未选择文件');
             }
-          }, 300);
+          }, 500);
         },
         { once: true }
       );

@@ -24,7 +24,9 @@ const Search = () => {
   }
 
   const highlightList = list.map(item => {
-    const contentIndex = item.content.indexOf(params.current.searchKey)
+    const reg = new RegExp(params.current.searchKey, 'i')
+    const ma = item.content.match(reg)
+    const contentIndex = ma?.index || 0
     if (contentIndex >= 0) {
       item.content = item.content.slice(contentIndex - 20 < 0 ? 0 : contentIndex - 20)
     }
